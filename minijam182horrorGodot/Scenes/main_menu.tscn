@@ -72,7 +72,7 @@ bus = &"SFX"
 
 [node name="MenuSFX2" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_opfnp")
-volume_db = -0.085
+volume_db = 7.839
 pitch_scale = 0.7
 bus = &"SFX"
 
