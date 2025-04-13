@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://j557a6a434r0"]
+[gd_scene load_steps=27 format=4 uid="uid://j557a6a434r0"]
 
 [ext_resource type="Script" path="res://Scripts/level_1.gd" id="1_8rg75"]
 [ext_resource type="Texture2D" uid="uid://c5lbfum8qfvit" path="res://Assets/SPRITES/road_main1.png" id="2_kll7a"]
@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://brq2v27haeuly" path="res://Assets/SPRITES/path_with_ramps.png" id="6_pyor4"]
 [ext_resource type="PackedScene" uid="uid://ukr7w56ndttm" path="res://Scenes/Fog.tscn" id="10_2p1vs"]
 [ext_resource type="Script" path="res://Scripts/camera_2d.gd" id="10_t8j41"]
+[ext_resource type="AudioStream" uid="uid://ckvifhml0p876" path="res://Sounds/SFX/Ambience/Ambience1.wav" id="16_eu36e"]
+[ext_resource type="AudioStream" uid="uid://byopskrdfmk7m" path="res://Sounds/SFX/Ambience/Ambience1pianolayer.wav" id="17_fbhvu"]
 
 [sub_resource type="Shader" id="Shader_d54ef"]
 
@@ -655,6 +657,15 @@ sources/1 = SubResource("TileSetAtlasSource_0t18k")
 sources/2 = SubResource("TileSetAtlasSource_422vq")
 sources/3 = SubResource("TileSetAtlasSource_js0tp")
 
+[sub_resource type="AudioStream" id="AudioStream_med2w"]
+
+[sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_6f1v7"]
+stream_count = 2
+stream_0/stream = ExtResource("16_eu36e")
+stream_0/volume = 0.0
+stream_1/stream = ExtResource("17_fbhvu")
+stream_1/volume = -1.25
+
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_8rg75")
 
@@ -791,6 +802,13 @@ tile_set = SubResource("TileSet_e4avh")
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_qvycd")]
 position = Vector2(40, 424)
 
+[node name="WalkPlayer" type="AudioStreamPlayer2D" parent="CharacterBody2D"]
+stream = SubResource("AudioStream_med2w")
+volume_db = -9.905
+pitch_scale = 0.97
+max_polyphony = 2
+bus = &"SFX"
+
 [node name="ParallaxForeground" type="ParallaxBackground" parent="."]
 layer = 1
 
@@ -861,3 +879,8 @@ script = ExtResource("10_t8j41")
 
 [node name="ParallaxBackground3" parent="." instance=ExtResource("10_2p1vs")]
 visible = false
+
+[node name="Ambience" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamSynchronized_6f1v7")
+volume_db = -15.848
+autoplay = true
