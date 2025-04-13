@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c5lbfum8qfvit" path="res://Assets/SPRITES/road_main1.png" id="2_kll7a"]
 [ext_resource type="Texture2D" uid="uid://b2po0r327caal" path="res://Assets/SPRITES/bg_trees.png" id="2_lh6i7"]
 [ext_resource type="PackedScene" uid="uid://dy1klodc78try" path="res://Scenes/Character.tscn" id="2_qvycd"]
-[ext_resource type="Texture2D" uid="uid://bi3hqhcj8jhgq" path="res://Assets/SPRITES/bg.png" id="2_vwo61"]
+[ext_resource type="Texture2D" uid="uid://cpml5qv5smlio" path="res://Assets/SPRITES/bg2holder.png" id="2_x0aun"]
 [ext_resource type="Texture2D" uid="uid://cn4k67otyjggk" path="res://Assets/SPRITES/road_main2.png" id="3_o4yr1"]
 [ext_resource type="Script" path="res://Scripts/parallax_background.gd" id="3_wb2fx"]
 [ext_resource type="Texture2D" uid="uid://b6pqeborbixma" path="res://Assets/SPRITES/road_main3.png" id="4_1dadk"]
@@ -661,10 +661,11 @@ script = ExtResource("1_8rg75")
 [node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground2"]
-motion_mirroring = Vector2(1152, 0)
+motion_scale = Vector2(0, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground2/ParallaxLayer"]
-texture = ExtResource("2_vwo61")
+position = Vector2(-16, -288)
+texture = ExtResource("2_x0aun")
 centered = false
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
@@ -734,6 +735,14 @@ scale = Vector2(0.8, 0.8)
 texture = ExtResource("2_lh6i7")
 flip_h = true
 
+[node name="Sprite2D3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer5"]
+modulate = Color(0, 0.204573, 0.191245, 1)
+self_modulate = Color(0.151276, 0.151276, 0.151276, 1)
+position = Vector2(336, 424)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_lh6i7")
+flip_h = true
+
 [node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer5"]
 modulate = Color(0, 0.204573, 0.191245, 1)
 self_modulate = Color(0.151276, 0.151276, 0.151276, 1)
@@ -784,9 +793,9 @@ position = Vector2(40, 424)
 
 [node name="ParallaxForeground" type="ParallaxBackground" parent="."]
 layer = 1
-visible = false
 
 [node name="ParallaxLayer7" type="ParallaxLayer" parent="ParallaxForeground"]
+visible = false
 position = Vector2(680, 0)
 skew = 0.150098
 motion_scale = Vector2(2, 1)
