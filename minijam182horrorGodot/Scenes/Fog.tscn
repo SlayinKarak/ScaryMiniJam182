@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://ukr7w56ndttm"]
+
+[ext_resource type="Shader" path="res://fog.gdshader" id="1_ap6xm"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_5et8a"]
+seed = 1
+frequency = 0.0061
+fractal_octaves = 9
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ncr5i"]
+width = 1152
+height = 648
+seamless = true
+seamless_blend_skirt = 0.515
+noise = SubResource("FastNoiseLite_5et8a")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vf2n6"]
+shader = ExtResource("1_ap6xm")
+shader_parameter/density = 0.568
+shader_parameter/speed = Vector2(0.02, 0.01)
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_ncr5i")
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+layer = 1
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(1152, 648)
+
+[node name="ColorRect" type="ColorRect" parent="ParallaxLayer"]
+material = SubResource("ShaderMaterial_vf2n6")
+offset_right = 1152.0
+offset_bottom = 648.0
